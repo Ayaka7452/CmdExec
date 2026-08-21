@@ -19,9 +19,12 @@ object RootExec {
 
     fun run(command: String, onResult: (Result) -> Unit) {
         Thread {
-            onResult(execute(command))
+            onResult(runSync(command))
         }.start()
     }
+
+    /** 同步执行，供后台服务使用。 */
+    fun runSync(command: String): Result = execute(command)
 
     private fun execute(command: String): Result {
         var process: Process? = null

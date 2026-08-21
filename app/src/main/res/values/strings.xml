@@ -17,20 +17,15 @@
     <string name="status_ok">执行成功（退出码 0）</string>
     <string name="status_failed">执行失败（退出码 %1$d）</string>
     <string name="status_failed_no_code">执行失败</string>
-    <string name="status_shortcut_empty">此命令为空，请先在主界面填写</string>
 
     <string name="dialog_title">命令 %1$d 执行结果</string>
     <string name="dialog_command">命令：%1$s</string>
     <string name="dialog_exit_code">退出码：%1$s</string>
     <string name="dialog_no_output">（无输出）</string>
 
-    <string name="main_note">提示：输入内容会自动保存。回到桌面后长按本应用图标，即可看到“命令 1 ~ 4”菜单项，点击即可通过 su 以 root 执行；也可以在三星日常程序里添加“应用快捷方式”来调用这些菜单项。首次执行时 KernelSU 会弹出授权请求，请允许。</string>
+    <string name="main_note">提示：输入内容会自动保存。回到桌面后长按本应用图标，即可看到“命令 1 ~ 4”菜单项，点击后会在后台通过 su 以 root 直接执行，不弹出任何界面；也可以在三星日常程序里添加“应用快捷方式”来调用这些菜单项。首次执行时 KernelSU 会弹出授权请求，请允许。</string>
 
     <string name="cmd_short_label">命令 %1$d</string>
     <string name="cmd_short_long_empty">命令 %1$d（未设置）</string>
     <string name="cmd_short_long_filled">命令 %1$d：%2$s</string>
-    <string name="cmd_title_slot">命令 %1$d</string>
-    <string name="command_empty_hint">（未设置命令）</string>
-    <string name="btn_rerun">重新运行</string>
-    <string name="btn_open_main">打开主界面</string>
 </resources>

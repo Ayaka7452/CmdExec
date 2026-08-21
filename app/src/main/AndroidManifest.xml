@@ -24,7 +24,14 @@
         <activity
             android:name=".ShortcutActivity"
             android:exported="true"
-            android:theme="@style/Theme.CmdExec" />
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@style/Theme.TransparentShortcut" />
+
+        <service
+            android:name=".RootCommandService"
+            android:exported="false" />
     </application>
 
 </manifest>
