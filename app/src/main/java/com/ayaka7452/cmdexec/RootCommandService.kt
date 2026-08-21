@@ -19,6 +19,7 @@ class RootCommandService : Service() {
         } else {
             ""
         }
+        val mode = CommandStore.getMode(this, slot)
 
         if (command.isBlank()) {
             stopSelf(startId)
@@ -26,7 +27,7 @@ class RootCommandService : Service() {
         }
 
         Thread {
-            RootExec.runSync(command)
+            RootExec.runSync(command, mode)
             stopSelf(startId)
         }.start()
 

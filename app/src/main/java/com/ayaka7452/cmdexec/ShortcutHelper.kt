@@ -14,12 +14,22 @@ object ShortcutHelper {
 
     fun publish(context: Context) {
         val shortcuts = (0 until CommandStore.COUNT).map { slot ->
+            val name = CommandStore.getName(context, slot)
             val command = CommandStore.get(context, slot)
-            val label = context.getString(R.string.cmd_short_label, slot + 1)
-            val longLabel = if (command.isBlank()) {
-                context.getString(R.string.cmd_short_long_empty, slot + 1)
+            val label = if (name.isBlank()) {
+                context.getString(R.string.cmd_short_label, slot + 1)
             } else {
-                context.getString(R.string.cmd_short_long_filled, slot + 1, command.take(24))
+                name.take(12)
+            }
+            val longLabel = when {
+                name.isBlank() && command.isBlank() ->
+                    context.getString(R.string.cmd_short_long_empty, slot + 1)
+                name.isBlank() ->
+                    context.getString(R.string.cmd_short_long_filled, slot + 1, command.take(24))
+                command.isBlank() ->
+                    context.getString(R.string.cmd_short_named_empty, name)
+                else ->
+                    context.getString(R.string.cmd_short_named_filled, name, command.take(24))
             }
             ShortcutInfoCompat.Builder(context, "cmd_$slot")
                 .setShortLabel(label)

@@ -17,19 +17,24 @@ object RootExec {
 
     private const val TIMEOUT_SECONDS = 60L
 
-    fun run(command: String, onResult: (Result) -> Unit) {
+    fun run(command: String, mode: String, onResult: (Result) -> Unit) {
         Thread {
-            onResult(runSync(command))
+            onResult(runSync(command, mode))
         }.start()
     }
 
     /** 同步执行，供后台服务使用。 */
-    fun runSync(command: String): Result = execute(command)
+    fun runSync(command: String, mode: String): Result = execute(command, mode)
 
-    private fun execute(command: String): Result {
+    private fun execute(command: String, mode: String): Result {
         var process: Process? = null
         return try {
-            process = ProcessBuilder("su", "-c", command)
+            val argv = if (mode == CommandStore.MODE_SH) {
+                arrayOf("sh", "-c", command)
+            } else {
+                arrayOf("su", "-c", command)
+            }
+            process = ProcessBuilder(*argv)
                 .redirectErrorStream(true)
                 .start()
 
@@ -54,11 +59,7 @@ object RootExec {
                 Result(process.exitValue(), output)
             }
         } catch (e: IOException) {
-            Result(
-                null,
-                "无法执行 su。\n请确认设备已 root（KernelSU/Magisk），" +
-                    "且本应用已被授予 root 权限。\n详情：${e.message ?: e.toString()}"
-            )
+            Result(null, "无法启动命令进程。\n${e.message ?: e.toString()}")
         } catch (e: Exception) {
             Result(null, "执行出错：${e.message ?: e.toString()}")
         } finally {

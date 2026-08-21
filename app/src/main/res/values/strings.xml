@@ -1,31 +1,41 @@
 <resources>
     <string name="app_name">CmdExec</string>
-    <string name="main_title">Root 快捷命令</string>
-    <string name="main_subtitle">在这里填写 4 条 root 命令，保存后即可从桌面长按菜单直接运行。</string>
+    <string name="main_title">Command Executor</string>
+    <string name="main_subtitle">在此输入要执行的命令。保存后，可在主屏幕长按应用图标，从菜单中快速运行相应命令。</string>
 
-    <string name="cmd_label_1">命令 1</string>
-    <string name="cmd_label_2">命令 2</string>
-    <string name="cmd_label_3">命令 3</string>
-    <string name="cmd_label_4">命令 4</string>
-    <string name="cmd_hint">例如：settings put system screen_brightness 100</string>
+    <string name="name_hint">输入名称</string>
+    <string name="cmd_hint">输入命令，例如：settings put system screen_brightness 100</string>
+    <string name="mode_label">执行模式</string>
+    <string name="mode_root">Root</string>
+    <string name="mode_shell">Shell</string>
     <string name="btn_run">运行</string>
+    <string name="btn_clear">清空</string>
 
     <string name="status_ready">就绪</string>
-    <string name="status_empty">命令为空，请先输入</string>
+    <string name="status_empty">尚未输入命令</string>
     <string name="status_running">正在执行…</string>
     <string name="status_timeout">执行超时（60 秒）</string>
     <string name="status_ok">执行成功（退出码 0）</string>
     <string name="status_failed">执行失败（退出码 %1$d）</string>
     <string name="status_failed_no_code">执行失败</string>
+    <string name="status_cleared">已清空</string>
+
+    <string name="clear_dialog_title">清空命令</string>
+    <string name="clear_dialog_message">确定要清空此槽位的名称和命令吗？此操作无法撤销。</string>
+    <string name="clear_confirm">清空</string>
+    <string name="cancel">取消</string>
 
     <string name="dialog_title">命令 %1$d 执行结果</string>
     <string name="dialog_command">命令：%1$s</string>
     <string name="dialog_exit_code">退出码：%1$s</string>
     <string name="dialog_no_output">（无输出）</string>
 
-    <string name="main_note">提示：输入内容会自动保存。回到桌面后长按本应用图标，即可看到“命令 1 ~ 4”菜单项，点击后会在后台通过 su 以 root 直接执行，不弹出任何界面；也可以在三星日常程序里添加“应用快捷方式”来调用这些菜单项。首次执行时 KernelSU 会弹出授权请求，请允许。</string>
+    <string name="mode_note">Root 模式通过 su 以超级用户权限执行；Shell 模式通过 sh 以当前权限执行。</string>
+    <string name="main_note">输入内容将自动保存。也可在“日常程序”中添加应用快捷方式，以调用这些命令。使用 Root 模式时，首次执行可能需要授权。</string>
 
     <string name="cmd_short_label">命令 %1$d</string>
     <string name="cmd_short_long_empty">命令 %1$d（未设置）</string>
     <string name="cmd_short_long_filled">命令 %1$d：%2$s</string>
+    <string name="cmd_short_named_empty">%1$s（未设置）</string>
+    <string name="cmd_short_named_filled">%1$s：%2$s</string>
 </resources>
