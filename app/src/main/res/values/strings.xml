@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Root快捷命令</string>
+    <string name="app_name">CmdExec</string>
     <string name="main_title">Root 快捷命令</string>
     <string name="main_subtitle">在这里填写 4 条 root 命令，保存后即可从桌面长按菜单直接运行。</string>
 
